@@ -7,19 +7,9 @@ permissions:
   pull-requests: write
 
 jobs:
-  compare_repos:
-    # Comment out this line to test the scripts in a fork
-    if: github.repository == 'dotnet/runtime'
-    name: Sync Code
+  compile:
     runs-on: windows-latest
     steps:
-    - name: Checkout aspnetcore
-      uses: actions/checkout@v2.0.0
-      with:
-        # Test this script using changes in a fork
-        repository: 'dotnet/aspnetcore'
-        path: aspnetcore
-        ref: main
     - name: Checkout runtime
       uses: actions/checkout@v2.0.0
       with:
