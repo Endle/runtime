@@ -14,7 +14,13 @@ jobs:
       uses: actions/checkout@v2.0.0
     - name: Build
       run: .\build.cmd -subset clr
+    - name: Pack
+      run: |
+        cd ..
+        dir
+        Compress-Archive runtime
+        dir
     - uses: actions/upload-artifact@v4
       with:
         name: build_dir
-        path: ./
+        path: runtime.zip
